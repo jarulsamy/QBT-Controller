@@ -5,7 +5,7 @@ mod ui;
 use std::path::PathBuf;
 
 use ini::Ini;
-use nwg::NativeUi;
+use nwg::{NativeUi, Window};
 use qbittorrent::*;
 
 fn load_config(path: PathBuf) -> Vec<QbtHost> {

@@ -105,6 +105,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0688c2a7f92e427f44895cd63841bff7b29f8d7a1648b9e7e07a4a365b2e1257"
 
 [[package]]
+name = "embed-manifest"
+version = "1.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "40ff574b0b0a794f8995383bb83f21f8f99214422cae791cb48d66da524b00f7"
+
+[[package]]
 name = "encoding_rs"
 version = "0.8.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -658,6 +664,7 @@ dependencies = [
 name = "qbt-controller"
 version = "0.1.0"
 dependencies = [
+ "embed-manifest",
  "native-windows-derive",
  "native-windows-gui",
  "reqwest",
