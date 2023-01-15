@@ -1,3 +1,4 @@
+use indoc::indoc;
 use reqwest::blocking::Response;
 use serde_derive::Deserialize;
 use serde_json::Value;
@@ -40,13 +41,18 @@ impl Display for GlobalInfo {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let paused = self.paused.unwrap_or(0);
         let resumed = self.resumed.unwrap_or(0);
+        let dl_speed = self.dl_info_speed / 1000;
+        let up_speed = self.up_info_speed / 1000;
+
         write!(
             f,
-            "Download: {} Kb/s\nUpload Rate: {} Kb/s\nPaused: {}\nResumed: {}\n",
-            self.dl_info_speed / 1000,
-            self.up_info_speed / 1000,
-            paused,
-            resumed,
+            indoc! {"
+            Download Rate: {:>} kb/s
+            Upload Rate: {:>} kb/s
+            Paused: {:>}
+            Resumed: {:>}
+            "},
+            dl_speed, up_speed, paused, resumed,
         )
     }
 }

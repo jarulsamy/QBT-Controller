@@ -357,6 +357,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "indoc"
+version = "1.0.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da2d6f23ffea9d7e76c53eee25dfb67bcd8fde7f1198b0855350698c9f07c780"
+
+[[package]]
 name = "instant"
 version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -665,6 +671,7 @@ name = "qbt-controller"
 version = "0.1.0"
 dependencies = [
  "embed-manifest",
+ "indoc",
  "native-windows-derive",
  "native-windows-gui",
  "reqwest",
