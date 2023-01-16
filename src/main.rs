@@ -2,7 +2,7 @@ extern crate native_windows_gui as nwg;
 mod qbittorrent;
 mod ui;
 
-use std::path::PathBuf;
+use std::{env, fs, path::PathBuf};
 
 use ini::Ini;
 use nwg::{NativeUi, Window};
@@ -46,7 +46,25 @@ fn load_config(path: PathBuf) -> Vec<QbtHost> {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Load config from disk
-    let conf_file_path: PathBuf = PathBuf::from("./settings.ini");
+    // let home_dir = home::home_dir().unwrap_or(PathBuf::from("."));
+    const CONF_FILENAME: &str = "settings.ini";
+    let conf_file_path = match home::home_dir() {
+        Some(mut x) => {
+            x.push("AppData");
+            x.push("Roaming");
+            x.push("qbt-controller");
+            x.push(CONF_FILENAME);
+            x
+        }
+        None => PathBuf::from(CONF_FILENAME),
+    };
+
+    // This will never panic, the case is handled above.
+    let conf_parent_dir = conf_file_path.parent().unwrap();
+    if !conf_parent_dir.is_dir() {
+        fs::create_dir(conf_parent_dir).expect("Error creating default configuration");
+    }
+
     let hosts = load_config(conf_file_path);
 
     let mut tray_info: ui::SystemTray = Default::default();
