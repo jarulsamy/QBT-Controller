@@ -9,4 +9,9 @@ fn main() {
         .requested_execution_level(AsInvoker);
     embed_manifest(manifest).unwrap();
     println!("cargo:rerun-if-changed=build.rs");
+
+    // Add a custom icon.
+    let mut res = winres::WindowsResource::new();
+    res.set_icon("assets/thonkers.ico");
+    res.compile().unwrap();
 }

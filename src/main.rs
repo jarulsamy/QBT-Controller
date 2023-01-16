@@ -1,11 +1,13 @@
+#![windows_subsystem = "windows"]
+
 extern crate native_windows_gui as nwg;
 mod qbittorrent;
 mod ui;
 
-use std::{env, fs, path::PathBuf};
+use std::{fs, path::PathBuf};
 
 use ini::Ini;
-use nwg::{NativeUi, Window};
+use nwg::NativeUi;
 use qbittorrent::*;
 
 fn load_config(path: PathBuf) -> Vec<QbtHost> {

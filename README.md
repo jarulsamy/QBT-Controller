@@ -7,6 +7,15 @@ resuming qBittorrent instances easy!
 
 TODO
 
+## Installation
+
+Install using `cargo` in the usual way.
+
+```sh
+$ cargo install --locked --git https://github.com/jarulsamy/QBT-Controller
+```
+> Note: This is currently extremely Windows specific. At most, Linux support will be added in the future.
+
 ## Configuration
 
 The default configuration file is created on program startup at

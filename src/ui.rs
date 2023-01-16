@@ -103,9 +103,10 @@ mod system_tray_ui {
         fn build_ui(mut data: SystemTray) -> Result<SystemTrayUi, nwg::NwgError> {
             use nwg::Event as E;
 
+            let ico = include_bytes!("../assets/thonkers.ico");
             // Resources
             nwg::Icon::builder()
-                .source_file(Some("./assets/thonkers.ico"))
+                .source_bin(Some(ico))
                 .build(&mut data.icon)?;
 
             // Controls
