@@ -1,7 +1,13 @@
 [package]
 name = "qbt-controller"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
 
 [build-dependencies]
 embed-manifest = "1.3.1"
